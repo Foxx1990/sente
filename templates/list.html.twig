@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<script>
+ $(function() {
+    $('#table').initDataTables({{ datatable_settings(datatable) }}, { searching: true,});
+    });
+    $(document).ready(function () {
+    $('#table').DataTable();
+    });
+</script>
+<!-- Insert this where you want the table to appear -->
+<table id="table" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nr</th>
+                <th>Kod Towaru</th>
+                <th>Nazwa</th>
+                <th>Opis Towaru</th>
+                <th>Cena</th>
+                <th>Waluta</th>
+                <th>Obniżka</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ product.SKU }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td> 
+                <td>{{ product.price  }}  </td>
+                <td>{{ product.currency }}</td>
+                <td>{{ product.discount }}</td>
+            </tr>
+             {% endfor %}
+        </tbody>
+    </table>
+<!-- Insert this at the end of your body element, but before the closing tag -->
+<script src="{{ asset('bundles/datatables/js/datatables.js') }}"></script>
+
+{% endblock %}
