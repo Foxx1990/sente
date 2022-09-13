@@ -20,10 +20,7 @@ class DefaultController extends AbstractController
             ['datatable' => $table,
                 'products' => $products]);
     }
-    /**
-     * @Route("/json", name="json")
-     *
-     */
+   
     public function getDataFromJson()
     {
         $json_data = file_get_contents('../assets\data\data.json');
