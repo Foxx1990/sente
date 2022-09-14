@@ -17,8 +17,7 @@
                 <th>Nazwa</th>
                 <th>Opis Towaru</th>
                 <th>Cena</th>
-                <th>Waluta</th>
-                <th>Obniżka</th>
+                <th>Cena po obniżce</th>
             </tr>
         </thead>
         <tbody>
@@ -28,9 +27,9 @@
                 <td>{{ product.SKU }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td> 
-                <td>{{ product.price  }}  </td>
-                <td>{{ product.currency }}</td>
-                <td>{{ product.discount }}</td>
+                {% set discount = product.price*product.discount/100 %}
+                <td> {% if product.discount > 0 %} <s>{{ product.price}}</s> {% else %} {{ product.price}}  {% endif %}</td>
+                <td> {% if product.discount > 0 %} <span style="color: red">{{ product.price-discount }}</span>  {% endif %} </td>
             </tr>
              {% endfor %}
         </tbody>
