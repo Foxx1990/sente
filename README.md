@@ -1,6 +1,6 @@
 # sente
 
-RUN APLICATION:
+Run Project:
 - composer install
 - yarn install
 - yarn dev
